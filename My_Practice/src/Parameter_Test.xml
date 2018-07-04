@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="s11">
+<test name="t11">
+<parameter name="admin" value="Hi1"/>
+<classes>
+<class name="Testng_Parameter"></class>
+</classes>
+</test>
+</suite>
