@@ -306,6 +306,36 @@ public void click_link()
 			
 			
 		}
+		case "TC03":
+		{
+			v_c=g.read_data("New_Customer",4, 1);
+			String Flag_1=df.formatCellValue(v_c);
+			if(Flag_1.contains("Y"))
+			{
+				//Read the Account No from  TC01
+				v_c=g.read_data("TDRow",3, 3);
+				String Accnt_no=df.formatCellValue(v_c);
+				g.write_data_1("TDRow",Accnt_no,5,3);
+				g.send_keys(withdraw, "click");
+				//Read the testdata row from Newcustomer
+				XSSFCell v_c_1=g.read_data("New_Customer",4, 2);
+				String td_row=df.formatCellValue(v_c_1);
+				int td_row_1=Integer.parseInt(td_row);  
+				System.out.println(td_row_1);
+				//Read the account number and the amount
+				v_c=g.read_data("TDRow",td_row_1, 3);
+				String Accnt_no_1=df.formatCellValue(v_c);
+				g.send_keys(acc_no, Accnt_no_1);
+				v_c=g.read_data("TDRow",td_row_1, 4);
+				String amnt_1=df.formatCellValue(v_c);
+				g.send_keys(amnt, amnt_1);
+				v_c=g.read_data("TDRow",td_row_1, 5);
+				String desc_1=df.formatCellValue(v_c);
+				g.send_keys(desc, desc_1);
+				g.send_keys(submit_1, "click");
+				g.write_data_1("New_Customer","Pass", 4, 3);
+			}
+		}
 		}
 	
 

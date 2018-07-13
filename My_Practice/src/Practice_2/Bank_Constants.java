@@ -20,4 +20,9 @@ public static String new_accnt="/html/body/div[3]/div/ul/li[5]/a";
 public static String customer="//input[@name='cusid']";
 public static String deposit="//input[@name='inideposit']";
 public static String button="//input[@name='button2']";
+public static String withdraw="/html/body/div[3]/div/ul/li[9]/a";
+public static String acc_no="//input[@name='accountno']";
+public static String amnt="//input[@name='ammount']";
+public static String submit_1="//input[@name='AccSubmit']";
+public static String desc="//input[@name='desc']";
 }
