@@ -51,6 +51,15 @@ public void send_keys(String xpath,String data)
 	this.title=driver_2.getTitle();
 	System.out.println(title);
 }
+public String send_keys_gettext_data(String xpath)
+{
+	String text_1=driver_2.findElement(By.xpath(xpath)).getText();
+	
+	this.title=driver_2.getTitle();
+	System.out.println(title);
+	System.out.println(text_1);
+	return text_1;
+}
 
 public void get_table_data_customer(String xpath)
 {
@@ -142,11 +151,11 @@ public void click_link()
 		v_c=g.read_data("Login",1, 1);
 		String s1=df.formatCellValue(v_c);
 		g.send_keys(id, s1);
-		Thread.sleep(800);	
+		Thread.sleep(300);	
 		v_c=g.read_data("Login",1, 2);
 		String s2=df.formatCellValue(v_c);
 		g.send_keys(pwd, s2);
-		Thread.sleep(800);	
+		Thread.sleep(300);	
 		g.send_keys(login, "click");
 		//Read the Expected data 
 		v_c=g.read_data("Login",1, 3);
@@ -198,32 +207,32 @@ public void click_link()
 				
 				g.send_keys(dob, "01011985");
 				
-				Thread.sleep(800);				
+				Thread.sleep(300);				
 				//address
 				v_c=g.read_data("New_Customer",1, 5);
 				String add_1=df.formatCellValue(v_c);
 				g.send_keys(addr, add_1);
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				//city
 				
 				v_c=g.read_data("New_Customer",1, 6);
 				String city_1=df.formatCellValue(v_c);
 				g.send_keys(city, city_1);
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				//state
 				v_c=g.read_data("New_Customer",1, 7);
 				String state_1=df.formatCellValue(v_c);
 				g.send_keys(state, state_1);
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				//PIN
 				v_c=g.read_data("New_Customer",1, 8);
 				String pin_1=df.formatCellValue(v_c);
 				g.send_keys(pincode, pin_1);
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				
 				
 				//Mobile No
@@ -231,7 +240,7 @@ public void click_link()
 				String mobileno=df.formatCellValue(v_c);
 				g.send_keys(phone, mobileno);
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				
 				//email
 				//v_c=g.read_data("New_Customer",1, 10);
@@ -239,7 +248,7 @@ public void click_link()
 			//	g.send_keys(email, email_1);
 				String email_id_1=g.email_id();
 				g.send_keys(email,email_id_1);
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				
 				//password
 				v_c=g.read_data("New_Customer",1, 11);
@@ -249,7 +258,7 @@ public void click_link()
 				//submit
 				g.send_keys(submit, "click");
 				
-				Thread.sleep(800);	
+				Thread.sleep(300);	
 				
 				g.write_data("Pass", 1, 12);
 				
@@ -334,6 +343,37 @@ public void click_link()
 				g.send_keys(desc, desc_1);
 				g.send_keys(submit_1, "click");
 				g.write_data_1("New_Customer","Pass", 4, 3);
+				g.send_keys_gettext_data(balance);
+				String balance_1=g.send_keys_gettext_data(balance);
+				g.write_data_1("TDRow",balance_1, 5, 6);
+			}
+		}
+		case "TC04":
+		{
+			v_c=g.read_data("New_Customer",5, 1);
+			String Flag_1=df.formatCellValue(v_c);
+			if(Flag_1.contains("Y"))
+			{
+			g.send_keys(balance_enquiry, "click");
+			//Read the testdata row from Newcustomer
+			XSSFCell v_c_1=g.read_data("New_Customer",5, 2);
+			String td_row=df.formatCellValue(v_c_1);
+			int td_row_1=Integer.parseInt(td_row);  
+			System.out.println(td_row_1);
+			//Read the account no
+			v_c=g.read_data("TDRow",td_row_1, 3);
+			String Accnt_no_1=df.formatCellValue(v_c);
+			if (Accnt_no_1.isEmpty())
+			{
+				System.out.println("No Account Number");
+				v_c=g.read_data("TDRow",5, 3);
+				String Accnt_no_2=df.formatCellValue(v_c);
+				g.write_data_1("TDRow",Accnt_no_2, 6, 3);
+				g.send_keys(acc_no, Accnt_no_2);
+				g.send_keys(submit, "click");
+				g.write_data_1("New_Customer","Pass", 5, 3);
+				
+			}
 			}
 		}
 		}

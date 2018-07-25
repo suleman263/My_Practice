@@ -25,4 +25,7 @@ public static String acc_no="//input[@name='accountno']";
 public static String amnt="//input[@name='ammount']";
 public static String submit_1="//input[@name='AccSubmit']";
 public static String desc="//input[@name='desc']";
+public static String balance="//*[@id='withdraw']/tbody/tr[23]/td[2]";
+public static String balance_enquiry="/html/body/div[3]/div/ul/li[12]/a";
+public static String acc_no_1="//input[@name='accountno']";
 }
